@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:paycom/cores/constants/color.dart';
 import 'package:paycom/cores/constants/font_size.dart';
+import 'package:paycom/cores/constants/palette.dart';
 
 class TextWidget extends StatelessWidget {
   const TextWidget(
@@ -52,16 +52,17 @@ class TwoSpanTextWidget extends StatelessWidget {
     this.text,
     this.text2, {
     Key? key,
-    this.fontSize = kfsTinyText,
-    this.fontSize2 = kfsTinyText,
-    this.textColor = kcPrimaryColor,
-    this.textColor2 = kcPrimaryColor,
-    this.fontWeight = FontWeight.w400,
-    this.fontWeight2 = FontWeight.w400,
+    this.fontSize = 48,
+    this.fontSize2 = 48,
+    this.textColor = kcWhiteColor,
+    this.textColor2 = kcSecondaryColor,
+    this.fontWeight = FontWeight.w700,
+    this.fontWeight2 = FontWeight.w700,
     this.textAlign = TextAlign.justify,
     this.maxLines,
     this.overflow,
     this.decoration,
+    this.fontStyle,
   }) : super(key: key);
 
   final String text;
@@ -73,6 +74,7 @@ class TwoSpanTextWidget extends StatelessWidget {
   final FontWeight? fontWeight;
   final FontWeight? fontWeight2;
   final TextAlign? textAlign;
+  final FontStyle? fontStyle;
   final int? maxLines;
   final TextOverflow? overflow;
   final TextDecoration? decoration;
@@ -82,8 +84,9 @@ class TwoSpanTextWidget extends StatelessWidget {
     return Text.rich(
       TextSpan(
         text: text,
-        style: GoogleFonts.openSans(
+        style: GoogleFonts.inter(
           fontSize: fontSize,
+          fontStyle: fontStyle,
           color: textColor,
           fontWeight: fontWeight,
           decoration: decoration,
@@ -91,7 +94,7 @@ class TwoSpanTextWidget extends StatelessWidget {
         children: <InlineSpan>[
           TextSpan(
             text: text2,
-            style: GoogleFonts.openSans(
+            style: GoogleFonts.inter(
               fontSize: fontSize2,
               color: textColor2,
               fontWeight: fontWeight2,

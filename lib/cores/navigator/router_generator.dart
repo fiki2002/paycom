@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:paycom/cores/navigator/error_route.dart';
+import 'package:paycom/features/auth/presentation/pages/sign_up.dart';
 import 'package:paycom/features/onboarding/splash_page.dart';
 
 class RouteGenerator {
@@ -12,6 +13,8 @@ class RouteGenerator {
     switch (settings.name) {
       case SplashPage.route:
         return pageRoute(const SplashPage());
+      case SignUpPage.route:
+        return pageRoute(const SignUpPage());
       default:
         return errorRoute();
     }
