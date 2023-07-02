@@ -6,5 +6,5 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SetUpLocators.init();
 
-  runApp( MyApp());
+  runApp(MyApp());
 }

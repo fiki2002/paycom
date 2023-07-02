@@ -10,7 +10,7 @@ import 'package:paycom/cores/utils/enums.dart';
 import 'package:paycom/cores/utils/snack_bar_service.dart';
 import 'package:paycom/features/auth/data/model/sign_up_model.dart';
 import 'package:paycom/features/auth/domain/usecases/sign_up_usecase.dart';
-import 'package:paycom/features/auth/presentation/pages/sign_in.dart';
+import 'package:paycom/features/auth/presentation/pages/sign_in_page.dart';
 
 class SignUpNotifier extends ChangeNotifier {
   final SignUpUsecase signUpUsecase;
@@ -66,7 +66,7 @@ class SignUpNotifier extends ChangeNotifier {
     } else {
       _signUpData.putIfAbsent(key, () => value);
     }
-    log(_signUpData[firstName].toString());
+    log(_signUpData.toString());
 
     notifyListeners();
   }

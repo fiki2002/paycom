@@ -14,5 +14,5 @@ const String email = 'email';
 const String password = 'password';
 const String defaultCountry = 'defaultCountry';
 const String carrierCode = 'carrierCode';
-const String type = 'user';
+const String type = 'type';
 const String formattedPhone = 'formattedPhone';

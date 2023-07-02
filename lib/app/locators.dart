@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:paycom/features/auth/data/datasource/auth_remote_data_source.dart';
 import 'package:paycom/features/auth/data/repository_impl/auth_repo_impl.dart';
 import 'package:paycom/features/auth/domain/repositories/authentication_repository.dart';
+import 'package:paycom/features/auth/domain/usecases/sign_in_usecase.dart';
 import 'package:paycom/features/auth/domain/usecases/sign_up_usecase.dart';
 
 class SetUpLocators {
@@ -19,6 +20,11 @@ class SetUpLocators {
     /// usecases
     getIt.registerLazySingleton<SignUpUsecase>(
       () => SignUpUsecase(
+        repository: getIt<AuthenticationRepository>(),
+      ),
+    );
+    getIt.registerLazySingleton<SignInUsecase>(
+      () => SignInUsecase(
         repository: getIt<AuthenticationRepository>(),
       ),
     );

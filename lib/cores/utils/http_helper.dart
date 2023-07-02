@@ -6,24 +6,27 @@ import 'package:flutter/foundation.dart';
 import 'package:paycom/cores/utils/logger.dart';
 import 'package:http/http.dart' as http;
 
+final Map<String, String> headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+};
+
 class HttpHelper {
   /// Make an [Http] post request
   static Future<Map<String, dynamic>> post({
     required String url,
     required Map<String, dynamic> body,
+    Map<String, String>? header,
   }) async {
     try {
-      LoggerHelper.log(url);
-
       http.Response response = await http
           .post(
             Uri.parse(url),
+            headers: header ?? headers,
             body: json.encode(body),
           )
           .timeout(const Duration(seconds: 30));
-
-      LoggerHelper.log(response.body);
-
+          
       final Map<String, dynamic> result = json.decode(response.body);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
@@ -49,8 +52,8 @@ class HttpHelper {
     }
   }
 
-    static String checkForError(Map data) {
-    if (data['status'] == 401 ) {
+  static String checkForError(Map data) {
+    if (data['status'] == 401) {
       final String? message = data['message'];
 
       if (message != null) {
