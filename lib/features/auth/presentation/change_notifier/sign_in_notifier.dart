@@ -38,6 +38,7 @@ class SignInNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+
   bool isLoading = false;
 
   /// Calls Login endpoint

@@ -1,16 +1,12 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 
 import 'package:paycom/cores/constants/assets.dart';
 import 'package:paycom/cores/failure/failure.dart';
-import 'package:paycom/cores/navigator/app_router.dart';
 import 'package:paycom/cores/utils/enums.dart';
 import 'package:paycom/cores/utils/snack_bar_service.dart';
 import 'package:paycom/features/auth/data/model/sign_up_model.dart';
 import 'package:paycom/features/auth/domain/usecases/sign_up_usecase.dart';
-import 'package:paycom/features/auth/presentation/pages/sign_in_page.dart';
 
 class SignUpNotifier extends ChangeNotifier {
   final SignUpUsecase signUpUsecase;
@@ -66,10 +62,9 @@ class SignUpNotifier extends ChangeNotifier {
     } else {
       _signUpData.putIfAbsent(key, () => value);
     }
-    log(_signUpData.toString());
-
     notifyListeners();
   }
+
 
   bool isLoading = false;
   Future<Either<Failure, SignUpResponseModel>> signUp(
@@ -95,8 +90,6 @@ class SignUpNotifier extends ChangeNotifier {
         isLoading = false;
         notifyListeners();
         resetSignUpData();
-        AppRouter.instance.clearRouteAndPush(SignInPage.route);
-
         SnackBarService.showSuccessSnackBar(
           context: context,
           message: r.message ??
