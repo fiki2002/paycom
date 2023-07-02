@@ -50,8 +50,8 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       if (res.status == 200 || res.status == 201) {
         return Right(res);
       } else {
-        return const Left(
-          BaseFailures(message: 'Something went wrong!'),
+        return Left(
+          BaseFailures(message: res.message ?? 'Something went wrong!'),
         );
       }
     } on SocketException {

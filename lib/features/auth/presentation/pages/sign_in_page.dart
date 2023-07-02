@@ -22,65 +22,67 @@ class SignInPage extends StatelessWidget {
       body: SafeArea(
         child: Form(
           key: _formKey,
-          child: Consumer<SignInNotifier>(builder: (_, value, __) {
-            return Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: sp(35),
-                vertical: sp(kfsLargerText),
-              ),
-              child: Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Align(
-                      alignment: Alignment.center,
-                      child: TextWidget(
-                        'payCOM',
-                        fontSize: sp(kfsLargerText),
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    verticalSpace(15),
-                    Align(
-                      alignment: Alignment.center,
-                      child: TextWidget(
-                        'Welcome',
-                        fontSize: sp(kfsLargerText),
-                        textColor: kcSecondaryColor,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    verticalSpace(22),
-                    const SignInFormWidget(),
-                    value.isLoading
-                        ? const Button.loading()
-                        : Button(
-                            text: 'Sign In',
-                            onTap: () => signUserIn(context),
-                          ),
-                    verticalSpace(10),
-                    GestureDetector(
-                      onTap: () {
-                        AppRouter.instance.navigateTo(SignUpPage.route);
-                      },
-                      child: Center(
-                        child: TwoSpanTextWidget(
-                          'Don\'t have an account? ',
-                          'Register now',
-                          fontSize: sp(12),
-                          fontSize2: sp(12),
-                          textColor: kcPrimaryColor,
-                          textColor2: kcPrimaryColor,
-                          fontWeight: FontWeight.w400,
-                          fontWeight2: FontWeight.w600,
+          child: SingleChildScrollView(
+            child: Consumer<SignInNotifier>(builder: (_, value, __) {
+              return Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: sp(35),
+                  vertical: sp(kfsLargerText),
+                ),
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: TextWidget(
+                          'payCOM',
+                          fontSize: sp(kfsLargerText),
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
-                    ),
-                  ],
+                      verticalSpace(15),
+                      Align(
+                        alignment: Alignment.center,
+                        child: TextWidget(
+                          'Welcome',
+                          fontSize: sp(kfsLargerText),
+                          textColor: kcSecondaryColor,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      verticalSpace(22),
+                      const SignInFormWidget(),
+                      value.isLoading
+                          ? const Button.loading()
+                          : Button(
+                              text: 'Sign In',
+                              onTap: () => signUserIn(context),
+                            ),
+                      verticalSpace(10),
+                      GestureDetector(
+                        onTap: () {
+                          AppRouter.instance.navigateTo(SignUpPage.route);
+                        },
+                        child: Center(
+                          child: TwoSpanTextWidget(
+                            'Don\'t have an account? ',
+                            'Register now',
+                            fontSize: sp(12),
+                            fontSize2: sp(12),
+                            textColor: kcPrimaryColor,
+                            textColor2: kcPrimaryColor,
+                            fontWeight: FontWeight.w400,
+                            fontWeight2: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            );
-          }),
+              );
+            }),
+          ),
         ),
       ),
     );

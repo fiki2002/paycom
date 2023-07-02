@@ -27,88 +27,90 @@ class SignUpPage extends StatelessWidget {
         child: Form(
           key: _formKey,
           child: Consumer<SignUpNotifier>(builder: (_, value, __) {
-            return Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: sp(35), vertical: sp(kfsLargerText)),
-              child: Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Align(
-                      alignment: Alignment.center,
-                      child: TextWidget(
-                        'payCOM',
-                        fontSize: sp(kfsLargerText),
-                        fontWeight: FontWeight.w700,
+            return SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: sp(35), vertical: sp(kfsLargerText)),
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: TextWidget(
+                          'payCOM',
+                          fontSize: sp(kfsLargerText),
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
-                    ),
-                    verticalSpace(15),
-                    Align(
-                      alignment: Alignment.center,
-                      child: TextWidget(
-                        'Join us Now',
-                        fontSize: sp(kfsLargerText),
+                      verticalSpace(15),
+                      Align(
+                        alignment: Alignment.center,
+                        child: TextWidget(
+                          'Join us Now',
+                          fontSize: sp(kfsLargerText),
+                          textColor: kcSecondaryColor,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      verticalSpace(22),
+                      const SignUpFormWidget(),
+                      verticalSpace(15),
+                      TextWidget(
+                        'Select Account Type ',
+                        fontSize: sp(kfsTinyText),
+                        fontWeight: FontWeight.w600,
                         textColor: kcSecondaryColor,
-                        fontWeight: FontWeight.w500,
                       ),
-                    ),
-                    verticalSpace(22),
-                    const SignUpFormWidget(),
-                    verticalSpace(15),
-                    TextWidget(
-                      'Select Account Type ',
-                      fontSize: sp(kfsTinyText),
-                      fontWeight: FontWeight.w600,
-                      textColor: kcSecondaryColor,
-                    ),
-                    verticalSpace(7),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const AccountTypeFilterChip(
-                          icon: person,
-                          title: 'User',
-                          type: AccountType.user,
-                        ),
-                        horizontalSpace(11),
-                        const AccountTypeFilterChip(
-                          icon: bank,
-                          title: 'Merchant',
-                          type: AccountType.merchant,
-                        ),
-                      ],
-                    ),
-                    verticalSpace(15),
-                    TextWidget(
-                      'By creating an account, you agree to our terms & conditions.',
-                      fontSize: sp(kfsVeryTinyText),
-                    ),
-                    verticalSpace(26),
-                    value.isLoading
-                        ? const Button.loading()
-                        : Button(
-                            text: 'Create Account',
-                            onTap: () => signUserUp(context),
+                      verticalSpace(7),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const AccountTypeFilterChip(
+                            icon: person,
+                            title: 'User',
+                            type: AccountType.user,
                           ),
-                    verticalSpace(10),
-                    GestureDetector(
-                      onTap: () {
-                        AppRouter.instance.navigateTo(SignInPage.route);
-                      },
-                      child: Center(
-                        child: TwoSpanTextWidget(
-                          'Already have an account? ',
-                          'Sign in now',
-                          fontSize: sp(12),
-                          fontSize2: sp(12),
-                          textColor: kcPrimaryColor,
-                          textColor2: kcPrimaryColor,
-                          fontWeight: FontWeight.w400,
-                          fontWeight2: FontWeight.w600,
+                          horizontalSpace(11),
+                          const AccountTypeFilterChip(
+                            icon: bank,
+                            title: 'Merchant',
+                            type: AccountType.merchant,
+                          ),
+                        ],
+                      ),
+                      verticalSpace(15),
+                      TextWidget(
+                        'By creating an account, you agree to our terms & conditions.',
+                        fontSize: sp(kfsVeryTinyText),
+                      ),
+                      verticalSpace(26),
+                      value.isLoading
+                          ? const Button.loading()
+                          : Button(
+                              text: 'Create Account',
+                              onTap: () => signUserUp(context),
+                            ),
+                      verticalSpace(10),
+                      GestureDetector(
+                        onTap: () {
+                          AppRouter.instance.navigateTo(SignInPage.route);
+                        },
+                        child: Center(
+                          child: TwoSpanTextWidget(
+                            'Already have an account? ',
+                            'Sign in now',
+                            fontSize: sp(12),
+                            fontSize2: sp(12),
+                            textColor: kcPrimaryColor,
+                            textColor2: kcPrimaryColor,
+                            fontWeight: FontWeight.w400,
+                            fontWeight2: FontWeight.w600,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             );

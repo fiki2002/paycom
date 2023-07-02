@@ -38,7 +38,6 @@ class SignInNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-
   bool isLoading = false;
 
   /// Calls Login endpoint
@@ -56,7 +55,7 @@ class SignInNotifier extends ChangeNotifier {
 
         SnackBarService.showSuccessSnackBar(
           context: context,
-          message: 'Failed to sign in',
+          message: l.message,
         );
         return Left(l);
       },
