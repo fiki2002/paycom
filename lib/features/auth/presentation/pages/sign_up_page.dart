@@ -5,9 +5,11 @@ import 'package:paycom/cores/constants/assets.dart';
 import 'package:paycom/cores/constants/font_size.dart';
 import 'package:paycom/cores/constants/palette.dart';
 import 'package:paycom/cores/extensions/notifiers.dart';
+import 'package:paycom/cores/navigator/app_router.dart';
 import 'package:paycom/cores/utils/enums.dart';
 import 'package:paycom/cores/utils/sizer_utils.dart';
 import 'package:paycom/features/auth/presentation/change_notifier/sign_up_notifier.dart';
+import 'package:paycom/features/auth/presentation/pages/sign_in.dart';
 import 'package:paycom/features/auth/presentation/widgets/sign_up_widgets/account_type_filter_chip.dart';
 import 'package:paycom/features/auth/presentation/widgets/sign_up_widgets/sign_up_form_widget.dart';
 import 'package:provider/provider.dart';
@@ -87,7 +89,25 @@ class SignUpPage extends StatelessWidget {
                         : Button(
                             text: 'Create Account',
                             onTap: () => signUserUp(context),
-                          )
+                          ),
+                    verticalSpace(10),
+                    GestureDetector(
+                      onTap: () {
+                        AppRouter.instance.navigateTo(SignInPage.route);
+                      },
+                      child: Center(
+                        child: TwoSpanTextWidget(
+                          'Already have an account? ',
+                          'Sign in now',
+                          fontSize: sp(12),
+                          fontSize2: sp(12),
+                          textColor: kcPrimaryColor,
+                          textColor2: kcPrimaryColor,
+                          fontWeight: FontWeight.w400,
+                          fontWeight2: FontWeight.w600,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
