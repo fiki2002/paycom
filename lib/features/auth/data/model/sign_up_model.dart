@@ -18,9 +18,9 @@ class SignUpResponseModel extends SignUpResponseEntity {
 
   factory SignUpResponseModel.fromMap(Map<String, dynamic> map) {
     return SignUpResponseModel(
-      status: map['status'] as int,
-      reason: map['reason'] as String,
-      message: map['message'] as String,
+      status: map['status'] as int?,
+      reason: map['reason'] as String?,
+      message: map['message'] as String?,
     );
   }
 }

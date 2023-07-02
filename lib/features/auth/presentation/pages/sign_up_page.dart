@@ -4,6 +4,7 @@ import 'package:paycom/cores/components/custom_text_widget.dart';
 import 'package:paycom/cores/constants/assets.dart';
 import 'package:paycom/cores/constants/font_size.dart';
 import 'package:paycom/cores/constants/palette.dart';
+import 'package:paycom/cores/extensions/notifiers.dart';
 import 'package:paycom/cores/utils/enums.dart';
 import 'package:paycom/cores/utils/sizer_utils.dart';
 import 'package:paycom/features/auth/presentation/change_notifier/sign_up_notifier.dart';
@@ -50,7 +51,7 @@ class SignUpPage extends StatelessWidget {
                       ),
                     ),
                     verticalSpace(22),
-                    SignUpFormWidget(),
+                    const SignUpFormWidget(),
                     verticalSpace(15),
                     TextWidget(
                       'Select Account Type ',
@@ -81,15 +82,12 @@ class SignUpPage extends StatelessWidget {
                       fontSize: sp(kfsVeryTinyText),
                     ),
                     verticalSpace(26),
-                    Button(
-                      text: 'Create Account',
-                      onTap: () {
-                        if (_formKey.currentState!.validate()) {
-                          _formKey.currentState!.save();
-                          print('valid');
-                        }
-                      },
-                    )
+                    value.isLoading
+                        ? const Button.loading()
+                        : Button(
+                            text: 'Create Account',
+                            onTap: () => signUserUp(context),
+                          )
                   ],
                 ),
               ),
@@ -98,5 +96,16 @@ class SignUpPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void signUserUp(BuildContext context) {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      Future.delayed(const Duration(milliseconds: 500)).then(
+        (_) {
+          context.signUp.signUp(context);
+        },
+      );
+    }
   }
 }

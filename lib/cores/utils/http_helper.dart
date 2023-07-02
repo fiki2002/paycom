@@ -50,7 +50,7 @@ class HttpHelper {
   }
 
     static String checkForError(Map data) {
-    if (data['status'] == 400 ) {
+    if (data['status'] == 401 ) {
       final String? message = data['message'];
 
       if (message != null) {

@@ -47,7 +47,11 @@ class SignUpFormWidget extends StatelessWidget {
                 horizontalSpace(7),
                 SvgPicture.asset(arrowDown, fit: BoxFit.scaleDown),
                 horizontalSpace(3),
-                const TextWidget('+234'),
+                TextWidget(
+                  '+234',
+                  fontWeight: FontWeight.w400,
+                  fontSize: sp(12),
+                ),
                 horizontalSpace(3),
               ],
             ),

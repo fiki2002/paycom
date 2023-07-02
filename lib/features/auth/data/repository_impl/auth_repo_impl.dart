@@ -20,7 +20,11 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       Map<String, dynamic> map) async {
     try {
       final res = await remoteDatasource.signUp(map);
-      return Right(res);
+      if (res.status == 200) {
+        return Right(res);
+      } else {
+        return Left(BaseFailures(message: res.message?? 'Something went wrong!'));
+      }
     } on SocketException {
       return const Left(
         BaseFailures(message: ErrorText.noInternet),
