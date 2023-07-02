@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:paycom/cores/constants/palette.dart';
 import 'package:paycom/cores/navigator/app_router.dart';
 import 'package:paycom/cores/navigator/router_generator.dart';
+import 'package:paycom/features/auth/presentation/change_notifier/sign_up_notifier.dart';
 import 'package:paycom/features/onboarding/change_notifier/splash_notifier.dart';
 import 'package:paycom/features/onboarding/splash_page.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         return MultiProvider(
           providers: [
             ChangeNotifierProvider.value(value: SplashScreenNotifier()),
+            ChangeNotifierProvider.value(value: SignUpNotifier()),
           ],
           child: MaterialApp(
             title: 'Ares',
